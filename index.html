@@ -66,9 +66,14 @@
 
   <!-- Hero with video background -->
   <main id="home" class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="../home.mp4" type="video/mp4">
-    </video>
+    <div class="video-container">
+        <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/fefbmw4VIUk?autoplay=1&mute=1&loop=1&playlist=fefbmw4VIUk" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+    </div>
     <div class="container hero-grid">
       <div class="animate">
         <span class="eyebrow">Real estate photo editing</span>
@@ -85,9 +90,7 @@
           <div class="stat"><h3 data-count="90">0</h3><p>Avg. satisfaction</p></div>
         </div>
       </div>
-      <div class="hero-card animate">
-        <div class="hero-image" role="img" aria-label="Modern living room"></div>
-      </div>
+      <div class="hero-placeholder animate"></div>
     </div>
   </main>
 

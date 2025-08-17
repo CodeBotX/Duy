@@ -52,30 +52,7 @@ n?.addEventListener('submit', (e) => {
   n.reset();
 });
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
 
-// Countdown to end-of-day today
-function updateCountdown(){
-  const now = new Date();
-  const end = new Date();
-  end.setHours(23,59,59,999);
-  const diff = Math.max(0, end - now);
-  const d = Math.floor(diff / (1000*60*60*24));
-  const h = Math.floor(diff / (1000*60*60)) % 24;
-  const m = Math.floor(diff / (1000*60)) % 60;
-  const s = Math.floor(diff / 1000) % 60;
-  document.getElementById('d').textContent = String(d).padStart(2,'0');
-  document.getElementById('h').textContent = String(h).padStart(2,'0');
-  document.getElementById('m').textContent = String(m).padStart(2,'0');
-  document.getElementById('s').textContent = String(s).padStart(2,'0');
-}
-setInterval(updateCountdown, 1000); updateCountdown();
-
-// Close banner
-document.getElementById('closeBanner').addEventListener('click', () => {
-  document.getElementById('banner').classList.add('hidden');
-});
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {

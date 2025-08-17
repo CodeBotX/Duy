@@ -5,9 +5,21 @@ menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('show'));
 
 // Theme toggle (simple demo — toggles a class you can extend)
 const themeToggle = document.getElementById('themeToggle');
+
+// Function to update the theme toggle button text
+function updateThemeButtonText() {
+    if (themeToggle) {
+        themeToggle.textContent = document.body.classList.contains('light') ? 'Light' : 'Dark';
+    }
+}
+
+// Set initial state of the theme toggle button
+document.addEventListener('DOMContentLoaded', updateThemeButtonText);
+
+// Add click event listener to toggle theme
 themeToggle?.addEventListener('click', () => {
   document.body.classList.toggle('light');
-  themeToggle.textContent = document.body.classList.contains('light') ? 'Light' : 'Dark';
+  updateThemeButtonText();
 });
 
 // Animated counters when in view
@@ -90,20 +102,20 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
 // Dropdown for nav link
-const contactNavBtn = document.getElementById('contact-nav-btn');
-const dropdownMenu = contactNavBtn?.nextElementSibling;
+const servicesNavBtn = document.getElementById('services-nav-btn');
+const dropdownMenu = servicesNavBtn?.nextElementSibling;
 
-contactNavBtn?.addEventListener('click', (e) => {
+servicesNavBtn?.addEventListener('click', (e) => {
     e.preventDefault(); // Ngăn trình duyệt cuộn lên đầu trang
     dropdownMenu.classList.toggle('show');
-    contactNavBtn.classList.toggle('active'); // Thêm/xoá class active để xoay icon
+    servicesNavBtn.classList.toggle('active'); // Thêm/xoá class active để xoay icon
 });
 
 // Close dropdown if user clicks outside
 document.addEventListener('click', (e) => {
-    if (!contactNavBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    if (!servicesNavBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
         dropdownMenu.classList.remove('show');
-        contactNavBtn.classList.remove('active'); // Xóa class active khi đóng
+        servicesNavBtn.classList.remove('active'); // Xóa class active khi đóng
     }
 });
 

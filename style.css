@@ -54,8 +54,29 @@ body.light header {
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-.logo { display:flex; align-items:center; gap:10px; font-weight: 800; letter-spacing: .2px; }
-.logo-dot { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(45deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 3px rgba(58,160,255,.25); }
+/* Styling for the new logo image */
+.logo {
+  display: flex;
+  align-items: center;
+  position: relative; /* Dùng để thêm các hiệu ứng tinh tế */
+}
+
+.logo-image {
+  height: 48px; /* Tăng chiều cao lên 20% (40px * 1.2 = 48px) */
+  width: auto;
+  transition: all 0.3s ease-in-out; /* Thêm hiệu ứng chuyển đổi mượt mà */
+  border-radius: 8px; /* Bo góc nhẹ cho hình ảnh */
+  padding: 4px; /* Tạo khoảng đệm nhỏ giữa hình ảnh và viền */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Viền mỏng, tinh tế */
+}
+
+/* Hiệu ứng làm nổi bật logo khi di chuột */
+.logo-image:hover {
+  transform: scale(1.05); /* Phóng to nhẹ logo khi di chuột */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng mềm */
+}
+
+.logo-dot { display: none; }
 nav ul { display:flex; gap: 18px; list-style: none; padding:0; margin:0; }
 nav a { text-decoration: none; color: var(--text); font-weight: 500; padding: 8px 12px; border-radius: 10px; }
 nav a:hover { background: rgba(255,255,255,.06); }
@@ -72,13 +93,38 @@ nav li {
   gap: 6px;
 }
 
+/* Styling for the Services nav button */
+.nav-dropdown-btn#services-nav-btn {
+  background-image: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease-in-out;
+}
+
+/* Hover effect to make the gradient move */
+.nav-dropdown-btn#services-nav-btn:hover {
+  background-position: -100% 0;
+}
+
+/* Make the dropdown icon match the gradient color */
+.nav-dropdown-btn#services-nav-btn .dropdown-icon {
+  fill: var(--brand); /* Or any color you prefer */
+  transition: fill 0.3s ease;
+}
+
+.nav-dropdown-btn#services-nav-btn:hover .dropdown-icon {
+  fill: var(--brand-2); /* A different color on hover */
+}
+
 .dropdown-icon {
   transition: transform 0.3s ease-in-out;
 }
 
 /* Rotate icon when dropdown is open */
 .dropdown-menu.show + .nav-dropdown-btn .dropdown-icon,
-#contact-nav-btn.active .dropdown-icon {
+#services-nav-btn.active .dropdown-icon {
     transform: rotate(180deg);
 }
 
@@ -119,6 +165,83 @@ nav li {
 .btn { border: 0; cursor: pointer; padding: 10px 16px; border-radius: 12px; font-weight: 600; }
 .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #061018; box-shadow: var(--shadow-soft); }
 .btn-ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.12); }
+
+/* Search bar styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius);
+  background-color: var(--card);
+  padding: 8px 12px;
+  border: 1px solid var(--muted);
+  transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px rgba(58, 160, 255, 0.2);
+}
+
+.search-input {
+  border: none;
+  background-color: transparent;
+  color: var(--text);
+  outline: none;
+  width: 150px;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.search-btn:hover {
+  color: var(--brand);
+}
+
+/* Ensure the search bar is responsive */
+@media (max-width: 768px) {
+  .search-container {
+    display: none; /* Hide on mobile devices or use a different layout */
+  }
+}
+
+/* Styling for the new CTA button */
+.btn-cta {
+  background: var(--brand);
+  color: white !important;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cta:hover {
+  background: var(--brand-2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 .hamburger { display:none; width:40px; height:40px; align-items:center; justify-content:center; border-radius: 12px; border:1px solid rgba(255,255,255,.12); background: transparent; }
 
 /* Mobile menu */

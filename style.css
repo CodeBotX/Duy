@@ -271,14 +271,17 @@ nav li {
     overflow: hidden;
 }
 
-.video-container iframe {
+.video-container video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* Prevents interaction with the video */
+    object-fit: cover;   /* quan trọng: cắt vừa khung, không có viền đen */
+    pointer-events: none; /* tránh click vào video */
 }
 
 .hero-grid {

@@ -287,7 +287,26 @@ nav li {
   position: relative;
   z-index: 1;
 }
-.eyebrow { color: var(--brand); font-weight: 700; letter-spacing: .3px; text-transform: uppercase; font-size: 12px; }
+/* Eyebrow with logo + email */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eyebrow-logo {
+  height: 20px;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 2px;
+  background: rgba(255,255,255,0.05);
+}
 .h1 { font-size: clamp(32px, 3.6vw, 54px); line-height: 1.05; margin: 10px 0 12px; font-weight: 800; }
 .lead { font-size: clamp(15px, 1.6vw, 18px); color: var(--muted); }
 .hero-card { background: rgba(17, 23, 34, 0.6); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); backdrop-filter: blur(6px); }
@@ -315,10 +334,24 @@ body.light .hero-card {
   color: #e8eef8;
 }
 
+/* Headline in uppercase */
+.hero .h1 {
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
 /* Thêm viền trắng cho các dòng chữ trong phần hero */
 .hero .h1, .hero .lead {
   /* text-shadow tạo hiệu ứng viền cho chữ */
   text-shadow: 1px 1px 3px rgba(0,0,0,0.6), -1px -1px 3px rgba(0,0,0,0.6), 1px -1px 3px rgba(0,0,0,0.6), -1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Adjust stats with suffixes */
+.hero-stats .stat h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
 }
 
 /* Fix the 'See results' button to have a consistent border color and text color */

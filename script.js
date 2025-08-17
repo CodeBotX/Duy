@@ -22,14 +22,25 @@ themeToggle?.addEventListener('click', () => {
   updateThemeButtonText();
 });
 
-// Animated counters when in view
+// Animated counters when in view (support + or % suffix)
 const counters = document.querySelectorAll('[data-count]');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const el = entry.target; const target = +el.getAttribute('data-count');
-      let start = 0; const step = Math.ceil(target / 60);
-      const t = setInterval(() => { start += step; if (start >= target) { start = target; clearInterval(t); } el.textContent = start; }, 20);
+      const el = entry.target;
+      const target = +el.getAttribute('data-count');
+      const originalText = el.textContent.trim();
+      const suffix = originalText.replace(/[0-9]/g, ''); // lấy ký tự ngoài số, ví dụ + hoặc %
+      let start = 0;
+      const step = Math.ceil(target / 60);
+      const t = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          start = target;
+          clearInterval(t);
+        }
+        el.textContent = start + suffix;
+      }, 20);
       io.unobserve(el);
     }
   });
